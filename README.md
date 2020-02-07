@@ -2,7 +2,7 @@
 
 A new hash that passes SMHasher. Built mainly with a random 10x64 S-box.
 
-Faster than SHA-256. Tested at ~ 900Mb/s @ 3 GHz.
+Faster than SHA1-160, SHA2-256 and SHA3-256 (Keccak). Tested at ~ 900Mb/s @ 3 GHz.
 
 ## Some more details
 
