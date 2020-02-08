@@ -25,6 +25,10 @@ If this works, beamsplitter would be a **universal hash**, or in other words the
 
 Hypothesis: Picking any high-entropy s-box will lead to a hash that passes SMHasher with usefully high probability. 
 
+#### Method
+
+Get 8192 random bytes from random org and format as 1024 uint64_t numbers, a 10x64 s-box.
+
 #### Sample 1
 
 s-box: T_0
@@ -43,6 +47,15 @@ Results:
 - passes all tests, except
 - fails seed with a single collision
 
+#### Sample 3
+
+S-box: T_2
+
+Results:
+
+- passes all tests, except
+- fails sparse with 2 collissions
+
 #### Discussion
 
 Because random samples in a high dimensional space are quickly representative and quickly converge to actual distribution over that space, I think this pattern is going to continue for the majority. Most (usefully high probability) s-boxes will be valid and fail on 1 or 2 tests with a couple collisions.
@@ -54,8 +67,3 @@ Make more tests. Also, in my development I noted that it's possible to pass thes
 - add extra mix line somewhere.
 - add extra round (on key, state or seed) somewhere.
 - modify initial state / seed constants.
-
-
-
-
-
