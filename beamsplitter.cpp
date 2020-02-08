@@ -4,11 +4,11 @@
 
 #if defined(_MSC_VER)
 
-#define FORCE_INLINE    __forceinline
+#define FORCE_INLINE  __forceinline
 
 // Other compilers
 
-#else   // defined(_MSC_VER)
+#else // defined(_MSC_VER)
 
 #define FORCE_INLINE inline __attribute__((always_inline))
 
@@ -22,20 +22,20 @@ uint64_t *state = (uint64_t *)buf;
   //--------
   // State mix function
 
-    FORCE_INLINE uint64_t rot( uint64_t v, int n)
+    FORCE_INLINE uint64_t rot( uint64_t v, int n) 
     {
-                        n = n & 63U;
-                        if (n)
-                                        v = (v >> n) | (v << (64-n));
-                        return v;
+      n = n & 63U;
+      if (n)
+          v = (v >> n) | (v << (64-n));
+      return v; 
     }
 
-    FORCE_INLINE uint64_t rot8( uint8_t v, int n)
+    FORCE_INLINE uint64_t rot8( uint8_t v, int n) 
     {
-                        n = n & 7U;
-                        if (n)
-                                        v = (v >> n) | (v << (8-n));
-                        return v;
+      n = n & 7U;
+      if (n)
+          v = (v >> n) | (v << (8-n));
+      return v; 
     }
 
     FORCE_INLINE void mix(const int A)
@@ -53,7 +53,7 @@ uint64_t *state = (uint64_t *)buf;
     }
 
   //---------
-  // Hash round function
+  // Hash round function 
 
     FORCE_INLINE void round( const uint64_t * m64, const uint8_t * m8, int len )
     {
@@ -91,7 +91,7 @@ uint64_t *state = (uint64_t *)buf;
     }
 
   //---------
-  // main hash function
+  // main hash function 
 
     void beamsplitter_64 ( const void * key, int len, unsigned seed, void * out )
     {
