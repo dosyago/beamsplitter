@@ -20,3 +20,42 @@ Build a hash that **mostly depends** on an s-box.
 Any random set of 8192 bytes can, with usefully high probability, form another 10x64 S-box leading to another good beamsplitter hash.
 
 If this works, beamsplitter would be a **universal hash**, or in other words the set of hashes parameterized by the s-box would form a [*univesal family*](https://en.wikipedia.org/wiki/Universal_hashing)
+
+### Random S-boxes Experiment
+
+Hypothesis: Picking any high-entropy s-box will lead to a hash that passes SMHasher with usefully high probability. 
+
+#### Sample 1
+
+s-box: T_0
+
+Results:
+
+- passes all tests, except
+- fails sparse with a couple of collision
+
+#### Sample 2
+
+S-box: T_1
+
+Results:
+
+- passes all tests, except
+- fails seed with a single collision
+
+#### Discussion
+
+Because random samples in a high dimensional space are quickly representative and quickly converge to actual distribution over that space, I think this pattern is going to continue for the majority. Most (usefully high probability) s-boxes will be valid and fail on 1 or 2 tests with a couple collisions.
+
+#### Future work
+
+Make more tests. Also, in my development I noted that it's possible to pass these (seed and sparse) with small adjustments like:
+
+- add extra mix line somewhere.
+- add extra round (on key, state or seed) somewhere.
+- modify initial state / seed constants.
+
+
+
+
+
