@@ -69,3 +69,9 @@ Make more tests. Also, in my development I noted that it's possible to pass thes
 - add extra mix line somewhere.
 - add extra round (on key, state or seed) somewhere.
 - modify initial state / seed constants.
+
+### Making a Universal Family
+
+In order to make this into a universal hash, it's not sufficient to simply replace T with any random, high entropy s-box and add an extra mix/round/constant somewhere to remove the couple of collissions that sometimes occur with a new s-box, it's also necessary to *hash* that input s-box using the original s-box, and use that *hashed s-box* as the s-box for the hash. This ensures, that, given two input s-boxes, the actual s-boxes the hash uses will be vastly different, which means you can't easily find two hashes that will hash a message to the same value (no more easier than finding a collission with the original hash, anyway). 
+
+
