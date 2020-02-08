@@ -2,7 +2,7 @@
 
 A new hash that passes SMHasher. Built mainly with a random 10x64 S-box.
 
-Faster than SHA1-160, SHA2-256 and SHA3-256 (Keccak). Tested at ~ 900Mb/s @ 3 GHz.
+Faster than SHA1-160, SHA2-256 and SHA3-256 (Keccak). Tested at ~ 1100Mb/s @ 3 GHz.
 
 [For a third-party verification of the SMHasher results, see here.](https://github.com/rurban/smhasher/blob/master/doc/beamsplitter)
 
@@ -12,6 +12,33 @@ Faster than SHA1-160, SHA2-256 and SHA3-256 (Keccak). Tested at ~ 900Mb/s @ 3 GH
 - 64-bits of hash produced from the last 128-bits of the state.
 - S-box built from random.org bytes.
 - beamsplitter is a family of hash functions parameterized by the random s-box.
+
+## Development History
+
+### Version 1 (Feb 7 2020)
+
+First version had the following characteristics:
+
+- 8 rounds ( 5 key, 2 seed, 1 state )
+- Original random S-box passed all SMHasher. 
+- 3 additional random S-box all *nearly* passed SMHasher. With 1-3 collissions failing 1 or 2 tests.
+- Speed ~ 900 Mb/s.
+
+### Corrections (Feb 8 2020)
+
+I noticed some errors in version 1. A `uint64_t` was incorrectly cast to an `int`. 
+I also noticed that the addition of the s-box value `M` was probably leading to some data loss, 
+compared with adding it via xor. Finally a `uint8_t` was unnecesarily cast to a `uint64_t`, which didn't
+change the value. 
+
+Correcting these I noticed the hash performed a lot better. I tested of the the additional random s-boxes
+and it passed all tests (formerly failing 1 or 2 with a couple of collissions). 
+
+Noting the good performance, I began removing round functions.
+
+First, I removed one key round, and the speed increased to 1100Mb/s and all tests still passed.
+
+
 
 ## Aim 1 :white_check_mark:
 
@@ -46,8 +73,7 @@ S-box: T_1
 
 Results:
 
-- passes all tests, except
-- fails seed with a single collision
+- passes all tests
 
 #### Sample 3
 

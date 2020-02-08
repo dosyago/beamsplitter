@@ -43,7 +43,8 @@ uint64_t *state = (uint64_t *)buf;
       const int B = A+1;
       const int iv = state[A] & 1023;
       const uint64_t M = T[iv];
-      state[B] += M + state[A];
+      state[B] ^= M;
+      state[B] += state[A];
 
       state[A] ^= state[B];
       state[B] ^= state[A];
@@ -114,7 +115,7 @@ uint64_t *state = (uint64_t *)buf;
       state[2] = 0xaccadacca80081e5;
       state[3] = 0xf00baaf00f00baaa;
 
-      round( key64Arr, key8Arr, len );
+      //round( key64Arr, key8Arr, len );
       round( key64Arr, key8Arr, len );
       round( key64Arr, key8Arr, len );
       round( key64Arr, key8Arr, len );
