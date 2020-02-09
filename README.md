@@ -45,4 +45,10 @@ All 3 random s-boxes produced a hash that passed SMHasher, with no failures.
 
 In order to make this into a universal hash, it's not sufficient to simply replace T with any random, high entropy s-box and add an extra mix/round/constant somewhere to remove the couple of collissions that sometimes occur with a new s-box, it's also necessary to *hash* that input s-box using the original s-box, and use that *hashed s-box* as the s-box for the hash. This ensures, that, given two input s-boxes, the actual s-boxes the hash uses will be vastly different, which means you can't easily find two hashes that will hash a message to the same value (no more easier than finding a collission with the original hash, anyway). 
 
+### More use-cases
+
+- As a basis for a cryptographic primitive (such as a PRNG, or symmetric cipher).
+  - You could *key* the PRNG/cipher by hashing the key, then hashing itself to generate the keystream.
+  - You could also *key* the PRNG/cipher by using the key to generate a random high-entropy s-box, which is then used as the s-box for the hash. 
+ 
 
