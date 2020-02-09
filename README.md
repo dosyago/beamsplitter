@@ -1,5 +1,11 @@
 # :gem: [beamsplitter](https://github.com/cris691/beamsplitter)
 
+#### **750MB/s** **[SMHasher](https://github.com/rurban/smhasher/blob/master/doc/beamsplitter)** 
+
+**Beamsplitter** (named for the [optical device](https://www.edmundoptics.com.tw/c/laser-optics/754/?#Categories=Categories%3ANzYy0)) is a SMHasher-passing family of hash functions parameterized over the choice of a high-entropy random 10x64 S-box. It's not particularly fast, and at ~750MB/s is faster than SHA1, SHA2 and SHA3. 
+
+-----
+
 A new hash that passes SMHasher. Built mainly with a random 10x64 S-box.
 
 Faster than SHA1-160, SHA2-256 and SHA3-256 (Keccak). Tested at ~ 750Mb/s @ 3 GHz.
