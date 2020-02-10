@@ -49,7 +49,7 @@ All 3 random s-boxes produced a hash that passed SMHasher, with no failures. THi
 
 ### Making a Universal Family
 
-In order to make this into a universal hash, it's not sufficient to simply replace T with any random, high entropy s-box and add an extra mix/round/constant somewhere to remove the couple of collissions that sometimes occur with a new s-box, it's also necessary to *hash* that input s-box using the original s-box, and use that *hashed s-box* as the s-box for the hash. This ensures, that, given two input s-boxes, the actual s-boxes the hash uses will be vastly different, which means you can't easily find two hashes that will hash a message to the same value (no more easier than finding a collission with the original hash, anyway). 
+In order to make this into a universal hash, it's not sufficient to simply replace T with any random, high entropy s-box, it's also necessary to *hash* that chosen s-box using the original s-box, and use that *hashed s-box* as the s-box for the function. This ensures, that, given two input s-boxes, the actual s-boxes the function uses will be vastly different, which means you can't easily find two functions that will hash a message to the same value (no easier than finding a collission with the original hash, anyway). 
 
 ### More use-cases
 
