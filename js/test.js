@@ -1,4 +1,4 @@
-import {discohash} from './index.js';
+import {beamsplitter} from './index.js';
 
 const tests = [
   [ 'abc123', 0 ],
@@ -15,7 +15,7 @@ big_key_value();
 
 function test() {
   tests.forEach(([k, s]) => {
-    console.log(`${k}, ${s}, 0x${discohash(k, s).toString(16).padStart(16,'0')}`);
+    console.log(`${k}, ${s}, 0x${beamsplitter(k, s).toString(16).padStart(16,'0')}`);
   });
 }
 
@@ -49,14 +49,14 @@ function smhasher_verification_value() {
 
 		const seed = 256-i;
 
-		hout[0] = discohash(key.slice(0,i), seed );
+		hout[0] = beamsplitter(key.slice(0,i), seed );
 
 		hashes.set( hash, i*hashbytes );
 	}
 
 	// Then hash the result array
 
-	hout[0] = discohash(hashes, 0);
+	hout[0] = beamsplitter(hashes, 0);
   // equivalentj
   // verif[0] = hash[0] | (hash[1] << 8) | (hash[2] << 16) | (hash[3] << 24);
   /**
@@ -81,7 +81,7 @@ function big_key_value() {
   const C = B.join('');
 
   const start = Date.now();
-  const hash = discohash(C, 9999);
+  const hash = beamsplitter(C, 9999);
   console.log("Hash", hash);
   const end = Date.now();
 

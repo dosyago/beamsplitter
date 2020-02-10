@@ -1,3 +1,5 @@
+import {T} from './sbox.js'
+
 const STATE = 32;
 const STATE64 = STATE >> 3;
 const STATEM = STATE-1;
@@ -9,11 +11,8 @@ const MASK = 0xffffffffffffff;
 const state8 = new Uint8Array(disco_buf);
 const state32 = new Uint32Array(disco_buf);
 const state = new BigUint64Array(disco_buf);
-const C = new BigUint64Array(1);
-const C8 = new Uint8Array(1);
 const T64 = new BigUint64Array(2);
 const T8 = new Uint8Array(2);
-const R = 23n;
 const S3 = 63n;
 const S4 = 64n;
 
@@ -35,7 +34,7 @@ function rot8( v, n = 0 ) {
 
 function mix(A = 0) {
   const B = A+1;
-  const iv = state[A] & 1023;
+  const iv = state[A] & 1023n;
   T64[0] = T[iv] + state[A];
   state[B] += T64[0];
 
@@ -50,8 +49,6 @@ function round( m64, m8, len ) {
   //console.log(`rstate0 = 0x${state[0].toString(16).padStart(16,'0')} 0x${state[1].toString(16).padStart(16,'0')} 0x${state[2].toString(16).padStart(16,'0')} 0x${state[3].toString(16).padStart(16,'0')}`);
 	let index = 0;
 	let sindex = 0;
-	C[0] = 0xfaccadaccad09997n;
-  C8[0] = 137;
 
 	for( let Len = len >> 3; index < Len; index++) {
 		T64[0] = m64[index] + BigInt(index) + 1n;
@@ -69,7 +66,7 @@ function round( m64, m8, len ) {
     //console.log(`rstate2 = 0x${state[0].toString(16).padStart(16,'0')} 0x${state[1].toString(16).padStart(16,'0')} 0x${state[2].toString(16).padStart(16,'0')} 0x${state[3].toString(16).padStart(16,'0')}`);
 	}
 
-	mix(1);
+	mix(0);
 
 	index <<= 3;
 	sindex = index&(BSTATEM);
@@ -135,7 +132,7 @@ export function beamsplitter( key = '', seed = 0 ) {
   seed32Arr[0] = 0xc5550690;
   seed32Arr[0] -= seed;
   seed32Arr[1] = 1 - seed;
-  seed32Arr[1] = ~seed32Arr[2];
+  seed32Arr[1] = ~seed32Arr[1];
 
   // nothing up my sleeve
   state[0] = 0x123456789abcdef0n;

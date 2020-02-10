@@ -57,6 +57,39 @@ In order to make this into a universal hash, it's not sufficient to simply repla
   - You could *key* the PRNG/cipher by hashing the key, then hashing itself to generate the keystream.
   - You could also *key* the PRNG/cipher by using the key to generate a random high-entropy s-box, which is then used as the s-box for the hash. 
   
+### Getting and using
+
+Donwload and use the C code here, or for a JS port:
+
+```console
+npm i --save beamsplitter
+```
+
+Use in Node.JS:
+
+```js
+import {beamsplitter} from 'beamsplitter'
+```
+
+Or using Snowpack as a webmodule:
+
+```js
+import {beamsplitter} from './web_modules/beamsplitter.js';
+```
+
+Then call it:
+
+```js
+const hash = beamsplitter(string_or_typed_array_key, optional_seed);
+```
+
+### JS Implementation
+
+- The JS Implementation produces the same value hashes as the C++ implementation.
+- The JS implementation is ~ 750x slower than the C++ implementation.
+- This is probably because of the use of BigInts to stand in for `uint64_t`
+- It's possible to implement a 64-bit mult using 32-bit view which would remove the need for BigInt. I have no plan to do this.
+
 ### The default S-box
 
 *This was obtained from random.org by requesting 8,192 random bytes, as were all S-boxes tested so far.*
@@ -270,5 +303,7 @@ const uint64_t T[1024] = {
   0x7f25bae3c4fea8af,0xecf8ed9dac1367b8,0x1a49274e39668f4e,0xca4a0ae881c7dc39
 };
 ```
- 
 
+### SMHasher Verification Value
+
+The value is `0x1bdf358b`
