@@ -1,0 +1,27 @@
+{
+  "name": "beamsplitter",
+  "version": "1.0.0",
+  "description": "A (possibly universal) family of hash functions over a random 10x64 s-box.",
+  "main": "js/index.js",
+  "scripts": {
+    "test": "node -r esm js/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cris691/beamsplitter.git"
+  },
+  "keywords": [
+    "hash",
+    "universal",
+    "smhasher"
+  ],
+  "author": "@dosy",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/cris691/beamsplitter/issues"
+  },
+  "homepage": "https://github.com/cris691/beamsplitter#readme",
+  "dependencies": {
+    "esm": "^3.2.25"
+  }
+}
