@@ -18,6 +18,7 @@ Faster than SHA1-160, SHA2-256 and SHA3-256 (Keccak). Tested at ~ 800Mb/s @ 3 GH
 - 64-bits of hash produced from the last 128-bits of the state.
 - A single 10x64 random S-box.
 - beamsplitter is a family of hash functions parameterized by a random s-box.
+- This repo includes a simple CLI app for hashing files or stdin from the command line.
 
 ## Aim 1 :white_check_mark:
 
@@ -59,7 +60,18 @@ In order to make this into a universal hash, it's not sufficient to simply repla
   
 ### Getting and using
 
-Donwload and use the C code here, or for a JS port:
+Use the C code from this repository, either in your project or as a CL-app (included):
+
+```console
+cd src
+./build.sh
+./bin/beamsum < 0x4613bc50e66b1334.txt
+> 0x4613bc50e66b1334
+./bin/beamsum 0x4613bc50e66b1334.txt
+> 0x4613bc50e66b1334
+```
+
+or, for a JS implementation:
 
 ```console
 npm i --save beamsplitter
