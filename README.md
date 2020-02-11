@@ -4,6 +4,8 @@
 
 **Beamsplitter** (named for the [optical device](https://www.edmundoptics.com.tw/c/laser-optics/754/?#Categories=Categories%3ANzYy0)) is a family of hash functions parameterized over the choice of a high-entropy random 10x64 S-box. All s-boxes tested so far pass all SMHasher tests. It's not particularly fast, and at ~800MB/s is faster than SHA1, SHA2 and SHA3. 
 
+**CLI app included**
+
 -----
 
 A new hash that passes SMHasher. Built mainly with a random 10x64 S-box.
