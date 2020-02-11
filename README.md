@@ -42,13 +42,20 @@ Get 8192 random bytes from random org and format as 1024 uint64_t numbers, a 10x
 
 #### Results
 
-All 3 random s-boxes produced a hash that passed SMHasher, with no failures. THis is in addition to the original S-box.
+All 3 random s-boxes produced a hash that passed SMHasher, with no failures. This is in addition to the original S-box.
 
 - [Original S-box smhasher results](https://github.com/cris691/beamsplitter/blob/master/Beamsplitter.T_original.result.txt)
 - [T_0 S-box smhasher results](https://github.com/cris691/beamsplitter/blob/master/Beamsplitter.T_0.result.txt)
 - [T_1 S-box smhasher results](https://github.com/cris691/beamsplitter/blob/master/Beamsplitter.T_1.result.txt)
 - [T_2 S-box smhasher results](https://github.com/cris691/beamsplitter/blob/master/Beamsplitter.T_2.result.txt)
 
+#### Random S-boxes Experiment #2
+
+Pick additional random s-boxes in the same way as above, and record results here:
+
+- T_3: Fail (passes everything except Sparse where there was **1** collission)
+
+**Current p(PASS, sbox) = 4/5 = 0.8**
 
 ### Making a Universal Family
 
