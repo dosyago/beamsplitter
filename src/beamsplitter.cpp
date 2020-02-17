@@ -125,13 +125,8 @@ uint64_t *state = (uint64_t *)buf;
       round( key64Arr, key8Arr, len );
       round( key64Arr, key8Arr, len );
 
-      /*
       //printf("state = %#018" PRIx64 " %#018" PRIx64 " %#018" PRIx64 " %#018" PRIx64 "\n",
       //  state[0], state[1], state[2], state[3] );
-      */
-
-      //printf("state = %#018" PRIx64 " %#018" PRIx64 "\n",
-      //  state[0], state[1] );
 
       uint8_t output[STATE] = {0};
       uint64_t *h = (uint64_t *)output;
