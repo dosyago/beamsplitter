@@ -17,19 +17,19 @@ const S3 = 63n;
 const S4 = 64n;
 
 function rot( v, n = 0n ) {
-	n = n & S3;
-	if (n) {
-		v = (v >> n) | (v << (S4-n));
-	}
-	return v; 
+  n = n & S3;
+  if (n) {
+    v = (v >> n) | (v << (S4-n));
+  }
+  return v; 
 }
 
 function rot8( v, n = 0 ) {
-	n = n & 7;
-	if (n) {
-		v = (v >> n) | (v << (8-n));
-	}
-	return v; 
+  n = n & 7;
+  if (n) {
+    v = (v >> n) | (v << (8-n));
+  }
+  return v; 
 }
 
 function mix(A = 0) {
@@ -47,48 +47,48 @@ function mix(A = 0) {
 
 function round( m64, m8, len ) {
   //console.log(`rstate0 = 0x${state[0].toString(16).padStart(16,'0')} 0x${state[1].toString(16).padStart(16,'0')} 0x${state[2].toString(16).padStart(16,'0')} 0x${state[3].toString(16).padStart(16,'0')}`);
-	let index = 0;
-	let sindex = 0;
+  let index = 0;
+  let sindex = 0;
 
-	for( let Len = len >> 3; index < Len; index++) {
-		T64[0] = m64[index] + BigInt(index) + 1n;
+  for( let Len = len >> 3; index < Len; index++) {
+    T64[0] = m64[index] + BigInt(index) + 1n;
     T64[1] = state[sindex] + BigInt(index) + 1n;
     T64[0] = rot(T64[0], T64[1]);
     //console.log(`rstate1 = 0x${state[0].toString(16).padStart(16,'0')} 0x${state[1].toString(16).padStart(16,'0')} 0x${state[2].toString(16).padStart(16,'0')} 0x${state[3].toString(16).padStart(16,'0')}`);
     state[sindex] += T64[0];
-		if ( sindex == HSTATE64M ) {
-			mix(0);
-		} else if ( sindex == STATE64M ) {
-			mix(2);
-			sindex = -1;
-		}
-		sindex++;
+    if ( sindex == HSTATE64M ) {
+      mix(0);
+    } else if ( sindex == STATE64M ) {
+      mix(2);
+      sindex = -1;
+    }
+    sindex++;
     //console.log(`rstate2 = 0x${state[0].toString(16).padStart(16,'0')} 0x${state[1].toString(16).padStart(16,'0')} 0x${state[2].toString(16).padStart(16,'0')} 0x${state[3].toString(16).padStart(16,'0')}`);
-	}
+  }
 
-	mix(0);
+  mix(0);
 
-	index <<= 3;
-	sindex = index&(BSTATEM);
+  index <<= 3;
+  sindex = index&(BSTATEM);
   //console.log(`rstate3 = 0x${state[0].toString(16).padStart(16,'0')} 0x${state[1].toString(16).padStart(16,'0')} 0x${state[2].toString(16).padStart(16,'0')} 0x${state[3].toString(16).padStart(16,'0')}`);
   //console.log(index,len);
-	for( ; index < len; index++) {
-		T8[0] = m8[index] + index + 1;
+  for( ; index < len; index++) {
+    T8[0] = m8[index] + index + 1;
     T8[1] = state8[sindex] + index + 1;
     T8[0] = rot8(T8[0], T8[1]);
     state8[sindex] += T8[0];
     //console.log(`rstate4 = 0x${state[0].toString(16).padStart(16,'0')} 0x${state[1].toString(16).padStart(16,'0')} 0x${state[2].toString(16).padStart(16,'0')} 0x${state[3].toString(16).padStart(16,'0')}`);
-		mix(index%STATE64M);
-		if ( sindex >= BSTATEM ) {
-			sindex = -1;
-		}
-		sindex++;
+    mix(index%STATE64M);
+    if ( sindex >= BSTATEM ) {
+      sindex = -1;
+    }
+    sindex++;
     //console.log(`rstate5 = 0x${state[0].toString(16).padStart(16,'0')} 0x${state[1].toString(16).padStart(16,'0')} 0x${state[2].toString(16).padStart(16,'0')} 0x${state[3].toString(16).padStart(16,'0')}`);
-	}
+  }
 
-	mix(0);
-	mix(1);
-	mix(2);
+  mix(0);
+  mix(1);
+  mix(2);
   //console.log(`rstate6 = 0x${state[0].toString(16).padStart(16,'0')} 0x${state[1].toString(16).padStart(16,'0')} 0x${state[2].toString(16).padStart(16,'0')} 0x${state[3].toString(16).padStart(16,'0')}`);
 }
 
