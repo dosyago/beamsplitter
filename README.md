@@ -53,13 +53,29 @@ All 3 random s-boxes produced a hash that passed SMHasher, with no failures. Thi
 
 Pick additional random s-boxes in the same way as above, and record results here:
 
-- T_3: Fail (passes everything except Sparse where there was **1** collission)
+- T_3: Fail (passes everything except SMHasher/Sparse where there was **1** collission)
 
 **Current p(PASS, sbox) = 4/5 = 0.8**
 
 ### Making a Universal Family
 
 In order to make this into a universal hash, it's not sufficient to simply replace T with any random, high entropy s-box, it's also necessary to *hash* that chosen s-box using the original s-box, and use that *hashed s-box* as the s-box for the function. This ensures, that, given two input s-boxes, the actual s-boxes the function uses will be vastly different, which means you can't easily find two functions that will hash a message to the same value (no easier than finding a collission with the original hash, anyway). 
+
+### Instructions for adding a new S-box
+
+If you add a new random S-box and you find it gives some collisions, some tweaks you can try are adding an extra line like:
+
+```c
+ round( seed64Arr, seed8Arr, 8 );
+ ```
+ 
+ or
+ 
+```c
+round( key64Arr, key8Arr, len );
+```
+
+Where the other such lines are. In other words, add **one more round**, which tends to reduce collissions. 
 
 ### More use-cases
 
