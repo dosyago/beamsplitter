@@ -1,6 +1,6 @@
 # :gem: [beamsplitter](https://github.com/cris691/beamsplitter)
 
-#### **[550MB/s - 800MB/s SMHasher](https://github.com/rurban/smhasher/blob/master/doc/beamsplitter)** [![version](https://img.shields.io/npm/v/beamsplitter.svg?label=&color=0080FF)](https://github.com/cris691/beamsplitter/releases/latest) ![npm downloads](https://img.shields.io/npm/dt/beamsplitter)
+#### **[550MB/s - 800MB/s SMHasher](https://github.com/rurban/smhasher/blob/master/doc/beamsplitter.txt)** [![version](https://img.shields.io/npm/v/beamsplitter.svg?label=&color=0080FF)](https://github.com/cris691/beamsplitter/releases/latest) ![npm downloads](https://img.shields.io/npm/dt/beamsplitter)
 
 **Beamsplitter** (named for the [optical device](https://www.edmundoptics.com.tw/c/laser-optics/754/?#Categories=Categories%3ANzYy0)) is a family of hash functions parameterized over the choice of a high-entropy random 10x64 S-box. All s-boxes tested so far pass all SMHasher tests. It's not particularly fast, and at ~550 - 800MB/s (depending on hardware) is faster than SHA1, SHA2 and SHA3. 
 
