@@ -12,7 +12,7 @@ A new hash that passes SMHasher. Built mainly with a random 10x64 S-box.
 
 Faster than SHA1-160, SHA2-256 and SHA3-256 (Keccak). Tested at ~ 550Mb/s @ 3 GHz.
 
-[For a third-party verification of the SMHasher results, see here.](https://github.com/rurban/smhasher/blob/master/doc/beamsplitter)
+[For a third-party verification of the SMHasher results, see here.](https://github.com/rurban/smhasher/blob/master/doc/beamsplitter.txt)
 
 ## Some more details
 
