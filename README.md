@@ -33,7 +33,7 @@ Build a hash that **mostly depends** on an s-box.
 
 Any random set of 8192 bytes can, with usefully high probability, form another 10x64 S-box leading to another good beamsplitter hash.
 
-If this works, beamsplitter would be a **universal hash**, or in other words the set of hashes parameterized by the s-box would form a [*univesal family*](https://en.wikipedia.org/wiki/Universal_hashing)
+If this works, beamsplitter would be a **universal hash**, or in other words the set of hashes parameterized by the s-box would form a [*universal family*](https://en.wikipedia.org/wiki/Universal_hashing)
 
 ### Random S-boxes Experiment
 
