@@ -60,11 +60,20 @@ Pick additional random s-boxes in the same way as above, and record results here
 
 **Current p(PASS, sbox) = 4/5 = 0.8**
 
+
+*Note* the fail could be noise because the test that failed (Sparse) has a random 7% chance of failing in any run. See [this issue on SMHasher](https://github.com/rurban/smhasher/issues/114). If that's the case, so far no weak, properly chosen boxes are found.
+
 ### Making a Universal Family
 
 In order to make this into a universal hash, it's not sufficient to simply replace T with any random, high entropy s-box, it's also necessary to *hash* that chosen s-box using the original s-box, and use that *hashed s-box* as the s-box for the function. This ensures, that, given two input s-boxes, the actual s-boxes the function uses will be vastly different, which means you can't easily find two functions that will hash a message to the same value (no easier than finding a collission with the original hash, anyway). 
 
 ### Instructions for adding a new S-box
+
+Some heuristic guides to properly choose your s-box:
+
+- each value should be unique
+- there should be equal numbers of 1 and 0 bits in the whole box, approximately
+- choose the values randomly
 
 If you add a new random S-box and you find it gives some collisions, some tweaks you can try are adding an extra line like:
 
