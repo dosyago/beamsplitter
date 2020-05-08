@@ -75,6 +75,19 @@ Some heuristic guides to properly choose your s-box:
 - there should be equal numbers of 1 and 0 bits in the whole box, approximately
 - choose the values randomly
 
+Also consider the case where you have two sboxes 
+identical except for one bit. Clearly that's not an ideal situation 
+to create a family of sboxes because that one bid might be selected only 
+some of the time to be included in the state and therefore will not contribute 
+to changing the state a whole lot. 
+
+Obviously in the long enough key and over the space of possible keys even sbox different by one bit 
+will end up producing avalanche with respect to it's adjacent sbox. 
+
+So in order to create a family it's suggested that the sboxes differ by at least half their bits. 1 idea I have about a way to do that is to take your candidate random box, or candidate source random data and then hash that with some hash function to generate the actual sbox data, to ensure all Xboxes in the family are as different as possible. 
+
+Of course if you prefer to design your sbox from the ground up you're welcome to but 8192 bytes is pretty large.
+
 If you add a new random S-box and you find it gives some collisions, some tweaks you can try are adding an extra line like:
 
 ```c
