@@ -1,8 +1,9 @@
 import {beamsplitter} from './index.js';
 
+const VVAL = '1bdf358b';
 const tests = [
-  [ 'abc123', 0 ],
-  [ 'xyz999', 2 ]
+  [ 'abc123', 0 ,  '07652c987199a30b'],
+  [ 'xyz999', 2 ,  '94921435c96e3417']
 ];
 
 test();
@@ -14,8 +15,10 @@ big_key_value();
 big_key_value();
 
 function test() {
-  tests.forEach(([k, s]) => {
-    console.log(`${k}, ${s}, 0x${beamsplitter(k, s).toString(16).padStart(16,'0')}`);
+  tests.forEach(([k, s, check]) => {
+    const val = beamsplitter(k, s).toString(16).padStart(16,'0');
+    console.log(`${k}, ${s}, 0x${val}`);
+    console.assert(val, check);
   });
 }
 
@@ -67,7 +70,9 @@ function smhasher_verification_value() {
   **/
   verif[0] = h32[0];
 
-  console.log(`JS verif val: 0x${verif[0].toString(16).padStart(8, '0')}`);
+  const vval = verif[0].toString(16).padStart(8, '0');
+  console.log(`JS verif val: 0x${vval}`);
+  console.assert(vval, VVAL);
   console.log(`JS verif val: 0x${verif[0].toString(2).padStart(32, '0')}`);
   
   return verif[0];
