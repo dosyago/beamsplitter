@@ -1,6 +1,6 @@
 {
   "name": "beamsplitter",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "A (possibly universal) family of hash functions over a random 10x64 s-box.",
   "main": "js/hash.js",
   "node": "js/index.js",
