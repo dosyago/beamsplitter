@@ -366,11 +366,12 @@ const uint64_t T[1024] = {
 };
 ```
 
-### SMHasher Verification Value
+## SMHasher Verification Value
 
 The value is `0x1bdf358b`
 
 ----------------
 
 # *Beamsplitter*
+
 
