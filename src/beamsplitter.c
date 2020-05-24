@@ -139,8 +139,8 @@ uint64_t *state = (uint64_t *)buf;
 
       ((uint64_t *)out)[0] = h[0];
       
-      //h[2] = ds[0];
-      //h[3] = ds[1];
+      //h[2] = state[0];
+      //h[3] = state[1];
       //
       //h[2] += h[3];
 
