@@ -370,6 +370,12 @@ const uint64_t T[1024] = {
 
 The value is `0x1bdf358b`
 
+
+## Possible Future Work
+
+- Make a note about how internal state can be extended
+- Implement a variable-output variant using a sponge construction
+
 ----------------
 
 # *Beamsplitter*
