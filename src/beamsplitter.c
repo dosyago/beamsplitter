@@ -139,6 +139,8 @@ uint64_t *state = (uint64_t *)buf;
 
       ((uint64_t *)out)[0] = h[0];
       
+      // uncomment for 128-bit version
+      
       //h[2] = state[0];
       //h[3] = state[1];
       //
