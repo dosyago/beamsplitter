@@ -94,6 +94,10 @@ uint64_t *state = (uint64_t *)buf;
   //---------
   // main hash function 
 
+  // Note that a large number of seeds lead to very bad quality, i.e. collisions.
+  // See some_bad_seeds[] and
+  // https://github.com/rurban/smhasher/blob/master/doc/beamsplitter.txt
+
     void beamsplitter_64 ( const void * key, int len, unsigned seed, void * out )
     {
       const uint8_t *key8Arr = (uint8_t *)key;
