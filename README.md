@@ -6,6 +6,11 @@
 
 [Link to the SUPERCOP ECRYPT benchmark for beamsplitter](https://bench.cr.yp.to/impl-hash/beamsplitter.html)
 
+**Related work**
+
+I came across this paper a few years after having created beamsplitter. The ideas are the same. 
+
+- [M. Thorup, Fast and Powerful Hashing using Tabulation, 2017](https://arxiv.org/pdf/1505.01523.pdf)
 
 **CLI app included**
 
